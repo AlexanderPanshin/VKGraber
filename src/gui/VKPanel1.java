@@ -3,6 +3,7 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.util.Objects;
 
 public class VKPanel1 extends JPanel {
     private JTextArea vkUrlTextArea;
@@ -15,7 +16,18 @@ public class VKPanel1 extends JPanel {
         vkUrlTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(vkUrlTextArea);
     }
-    public File getVkUrlPath() {
-        return new File(vkUrlTextArea.getText());
+    public String getVkUrlPath() {
+        return vkUrlTextArea.getText();
+    }
+
+    public JTextArea getVkUrlTextArea() {
+        return vkUrlTextArea;
+    }
+    public boolean isEmpathy(){
+        if(vkUrlTextArea==null){
+            return true;
+        }
+        if (Objects.equals(vkUrlTextArea.getText(), "")) return true;
+        else return false;
     }
 }

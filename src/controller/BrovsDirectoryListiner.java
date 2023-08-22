@@ -1,22 +1,19 @@
 package controller;
 
-import gui.BasePanel;
+import gui.VKPanel2;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
 
 
-public class BrovsImgListiner implements ActionListener {
+public class BrovsDirectoryListiner implements ActionListener {
     private JPanel bp;
     private static boolean count = true;
     private static JFileChooser fileChooser;
 
-    public BrovsImgListiner(JPanel bp) {
+    public BrovsDirectoryListiner(JPanel bp) {
         this.bp=bp;
     }
 
@@ -30,12 +27,20 @@ public class BrovsImgListiner implements ActionListener {
             if (fileChooser == null&&count) {
                 count=false;
                 fileChooser = new JFileChooser();
+                fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int result = fileChooser.showOpenDialog(bp);
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
-                    // Обработка выбранного файла
+                    BrovsDirectory vk2 = (BrovsDirectory) bp;
+                    vk2.setPathDirectory(selectedFile.getAbsolutePath());
+                    fileChooser = null;
+                    count = true;
                 }
-            }
+                if (result == JFileChooser.CANCEL_OPTION){
+                    fileChooser = null;
+                    count = true;
+                }
+            }//Надо подумать что делать с потоком Exception while removing reference.
         });
         fileChooserThread.start();
     }

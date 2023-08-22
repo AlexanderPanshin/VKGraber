@@ -1,5 +1,7 @@
 package model;
 
+import controller.Center;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -8,21 +10,19 @@ import java.net.URL;
 public class FileManager {
     private int conterImg = 0;
     private ParsPage pp;
+    private String fileNamePath;
     public FileManager(ParsPage parsPage) {
         pp = parsPage;
     }
 
     public void crateDirectory(){
-        if(!pp.getVkPanel().getImgPath().exists()){
-            System.out.println("Каталога нет, пытаемься его создать :");
-            System.out.println(pp.getVkPanel().getImgPath().mkdir());
-        }else {
-            System.out.println("Каталог существуе готов для записи. ");
+        if(Center.getBP().getBigTextPanel().getButtonTextPanel().isCreatDir()) {
+            File newDirectory = new File(pp.getVkPanel().getImgPath().getAbsolutePath() + File.separator + pp.getEnNameToPath());
+            newDirectory.mkdirs();
+            fileNamePath = newDirectory.getAbsolutePath() + File.separator;
+        } else {
+            fileNamePath = pp.getVkPanel().getImgPath().getAbsolutePath()+File.separator;
         }
-        File newDirectory = new File(pp.getVkPanel().getImgPath().getAbsolutePath()+File.separator+pp.getEnNameToPath());//tyt
-        System.out.println(newDirectory);
-        System.out.println("попытка создать директорию фото = "+newDirectory.mkdirs());
-
         for(String s : pp.getUrlImage()){
             recImage(s);
         }
@@ -30,12 +30,12 @@ public class FileManager {
             recImage("https://mygemorr.ru/noImage200.png");
         }
 
-        //recText(new File(newDirectory.getAbsolutePath()+File.separator+pt.fileName+".txt"));
+        recText(new File(fileNamePath+File.separator+pp.getEnNameToPath()+".txt"));
 
     }
     public void recImage(String url){
         try{
-            String fileName = pp.getVkPanel().getImgPath().getAbsolutePath()+File.separator+pp.getEnNameToPath()+"img"+conterImg+".jpg";
+            String fileName = fileNamePath + pp.getEnNameToPath() + "img" + conterImg + ".jpg";
             conterImg++;
             String website;
             if(!url.contains("https")) {
@@ -80,6 +80,17 @@ public class FileManager {
             }else System.out.println("Нет фотокарточек кутер не нужен");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+    public void recText(File f){
+        try(FileWriter writer = new FileWriter(f, false))
+        {
+            writer.write(Center.getPp().getOverText());
+            writer.flush();
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
         }
     }
 }

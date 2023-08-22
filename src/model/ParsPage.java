@@ -1,5 +1,6 @@
 package model;
 
+import controller.Center;
 import controller.ContVkPanel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,7 +27,7 @@ public class ParsPage {
     private ArrayList<String> urlImage = new ArrayList<>();
 
     public ParsPage(ContVkPanel vkPanel) {
-        linkUrl =vkPanel.getVkUrl().getAbsolutePath();
+        linkUrl =urlClubCorr(vkPanel.getVkUrl().toString());
         this.vkPanel = vkPanel;
         parseOverText();
         generateEnNameToPath();
@@ -35,6 +36,8 @@ public class ParsPage {
         //ruContentText = overText; ? удалить не используеться
         //enNameToFile = enNameToPath + ".txt"; тоже пока не используеться
         parsingUrlImage();
+        setInformPanel(overText.length(),urlImage.size());
+        Center.addPp(this);
     }
 
     public ArrayList<String> getUrlImage() {
@@ -171,6 +174,26 @@ public class ParsPage {
     }
     private void addPath(){
 
+    }
+
+    private String urlClubCorr(String s){
+        if(s.contains("club")) {
+            String[] parts = s.split("/club\\d+\\?w=");
+            String result = "https://vk.com/" + parts[1];
+            if(result.contains("all")){
+                result = result.replace("%2Fall","");
+            }
+            return result;
+        }
+        return s;
+    }
+
+    public String getOverText() {
+        return overText;
+    }
+    private void setInformPanel(int count, int img){
+        vkPanel.getInformPanel().changeImgCount(img);
+        vkPanel.getInformPanel().changeStrokeCount(count);
     }
 }
 
