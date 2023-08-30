@@ -22,7 +22,28 @@ public class BasePanel extends JFrame {
         add(bigVkPanel);
         add(bigFtpPanel);
         add(bigTextPanel);
+        JMenuBar headMenu = new JMenuBar();
+        headMenu.add(createFileMenu());
+        setJMenuBar(headMenu);
         Center.addBasePanel(this);
+    }
+    private JMenu createFileMenu()
+    {
+        JMenu prorites = new JMenu("Настройки");
+        JMenuItem autoSave = new JMenuItem("Авто-сохранение");
+        JMenuItem joomlaV4 = new JMenuItem("JoomlaV4");
+        prorites.add(autoSave);
+        prorites.addSeparator();
+        prorites.add(joomlaV4);
+
+        /*open.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                System.out.println ("ActionListener.actionPerformed : open");
+            }
+        });*/
+        return prorites;
     }
 
     public BigVkPanel getBigVkPanel() {

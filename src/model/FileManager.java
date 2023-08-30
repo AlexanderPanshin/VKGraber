@@ -43,7 +43,6 @@ public class FileManager {
                 sb.insert(4, "s");
                 website = sb.toString();
             }else website = url;
-            System.out.println("Downloading File From: " + website);
 
             URL urll = new URL(website);
             InputStream inputStream = urll.openStream();
@@ -51,12 +50,14 @@ public class FileManager {
             byte[] buffer = new byte[2048];
 
             int length = 0;
-            System.out.println("Запись  " + fileName);
             while ((length = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, length);
             }
             inputStream.close();
             outputStream.close();
+            if (Center.getFtpConnect() != null && FTPConnect.isFTPon()){
+                Center.getFtpConnect().ftpConn(new File(fileName));
+            }
 
         } catch(Exception e) {
             System.out.println("Exception: " + e.getMessage());
@@ -85,8 +86,21 @@ public class FileManager {
     public void recText(File f){
         try(FileWriter writer = new FileWriter(f, false))
         {
+
             writer.write(Center.getPp().getOverText());
+            if (Center.getFtpConnect() != null && Center.getFtpConnect().isFTPon()){
+                writer.write(Center.getBfp().getFtpPanel5().getDomainFTP().getText()+Center.getBfp().getFtpPanel2().getPathFtp().getText());
+            }else {//если ftp  выключен
+                for (String s:Center.getPp().getUrlImage()//перебераем массив урлов
+                     ) {
+                    writer.write(System.lineSeparator());
+                    writer.write("<img src=\""+s+"alt=\"альтернативный текст\">");//Дописываем адреса с тегом ИМГ в текстовый файл
+                }
+            }
             writer.flush();
+            if (Center.getFtpConnect() != null && Center.getFtpConnect().isFTPon()){
+                Center.getFtpConnect().ftpConn(f);
+            }
         }
         catch(IOException ex){
 

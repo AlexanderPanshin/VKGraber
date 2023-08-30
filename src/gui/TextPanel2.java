@@ -38,7 +38,11 @@ public class TextPanel2 extends JPanel {
 
             @Override
             public void itemStateChanged(ItemEvent e) {
-                isCreatDir = true;
+                if(e.getStateChange() == 1 ){
+                    isCreatDir = true;
+                }else {
+                    isCreatDir = false;
+                }
             }
         });
 
@@ -60,5 +64,9 @@ public class TextPanel2 extends JPanel {
 
     public boolean isCreatDir() {
         return isCreatDir;
+    }
+
+    public JButton getButton() {
+        return button;
     }
 }
