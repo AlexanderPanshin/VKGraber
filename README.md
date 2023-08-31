@@ -1,7 +1,7 @@
 
 ## Запуск приложения:
 Для удобства я публикую exe файл для Windows собранный в [Launch4j](https://launch4j.sourceforge.net)
-И jar архив. Запускается командой 
+И [jar архив](https://github.com/AlexanderPanshin/VKGraber/blob/master/out/artifacts/VKGraber_jar/VKGraber.jar). Запускается командой 
 `java -jar VKGraber.jar`
 или просто двойным кликом.
 Для работы программы нужна java 19 или 20 версии
