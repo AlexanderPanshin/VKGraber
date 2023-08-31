@@ -8,7 +8,7 @@ public class FTPPanel6 extends JPanel {
     private JButton save;
     private JLabel connectStatus;
     public FTPPanel6() {
-        save = new JButton("SAVE");
+        save = new JButton("CONNECT");
         save.setActionCommand("FTP");
         save.addActionListener(new ButtonListiner());
         connectStatus = new JLabel("Соединение не установлено");

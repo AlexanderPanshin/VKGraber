@@ -86,19 +86,32 @@ public class FileManager {
     public void recText(File f){
         try(FileWriter writer = new FileWriter(f, false))
         {
-
             writer.write(Center.getPp().getOverText());
-            if (Center.getFtpConnect() != null && Center.getFtpConnect().isFTPon()){
-                writer.write(Center.getBfp().getFtpPanel5().getDomainFTP().getText()+Center.getBfp().getFtpPanel2().getPathFtp().getText());
+            if (Center.getFtpConnect() != null && FTPConnect.isFTPon()){
+                String temp;
+                if (Center.getBP().getBigTextPanel().getButtonTextPanel().isCreatDir()) {
+                    for (int i = 0; i < pp.getUrlImage().size(); i++) {
+                        writer.write(System.lineSeparator());
+                        temp = Center.getBfp().getFtpPanel5().getDomainFTP().getText() + Center.getBfp().getFtpPanel2().getPathFtp().getText() + Center.getPp().getEnNameToPath() + "/"  + pp.getEnNameToPath() + "img" + i + ".jpg";
+                        writer.write(temp);
+                    }
+                } else {
+                    for (int i = 0; i < pp.getUrlImage().size(); i++) {
+                        writer.write(System.lineSeparator());
+                        temp = Center.getBfp().getFtpPanel5().getDomainFTP().getText() + Center.getBfp().getFtpPanel2().getPathFtp().getText() + Center.getPp().getEnNameToPath() + pp.getEnNameToPath() + "img" + i + ".jpg";
+                        writer.write(temp);
+                    }
+                }
             }else {//если ftp  выключен
                 for (String s:Center.getPp().getUrlImage()//перебераем массив урлов
                      ) {
                     writer.write(System.lineSeparator());
-                    writer.write("<img src=\""+s+"alt=\"альтернативный текст\">");//Дописываем адреса с тегом ИМГ в текстовый файл
+                    writer.write("<img src=\""+s+"\" alt=\"альтернативный текст\">");//Дописываем адреса с тегом ИМГ в текстовый файл
                 }
             }
             writer.flush();
-            if (Center.getFtpConnect() != null && Center.getFtpConnect().isFTPon()){
+            writer.close();
+            if (Center.getFtpConnect() != null && FTPConnect.isFTPon()){
                 Center.getFtpConnect().ftpConn(f);
             }
         }
