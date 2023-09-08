@@ -1,5 +1,6 @@
 package gui;
 
+import controller.ButtonListiner;
 import controller.Center;
 import controller.ContVkPanel;
 
@@ -30,9 +31,13 @@ public class BasePanel extends JFrame {
     private JMenu createFileMenu()
     {
         JMenu prorites = new JMenu("Настройки");
-        JMenuItem autoSave = new JMenuItem("Авто-сохранение");
+        JMenuItem save = new MenuSave();
+        JMenuItem load = new MenuLoad();
         JMenuItem joomlaV4 = new JMenuItem("JoomlaV4");
-        prorites.add(autoSave);
+        save.addActionListener(new ButtonListiner());
+        load.addActionListener(new ButtonListiner());
+        prorites.add(save);
+        prorites.add(load);
         prorites.addSeparator();
         prorites.add(joomlaV4);
 
