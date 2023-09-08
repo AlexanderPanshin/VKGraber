@@ -34,8 +34,9 @@ public class ButtonListiner implements ActionListener {
                 bp.getBigVkPanel().getVk4().getButtonGrabb().setText("OK");
             }
         } else if (Objects.equals(e.getActionCommand(), "SaveText")) {
+            if(Center.getPp()!=null){
             FileManager fm = new FileManager(Center.getPp());
-            fm.crateDirectory();
+            fm.crateDirectory();}
         } else if (Objects.equals(e.getActionCommand(), "FTP")) {
             Center.addFtpConn(new FTPConnect(Center.getBfp().getFtpPanel2().getPathFtp().getText(), Center.getBfp().getFtpPanel3().getLoginFtp().getText(),
                     Center.getBfp().getFtpPanel4().getPass().getPassword(), Center.getBfp().getFtpPanel5().getDomainFTP().getText()));

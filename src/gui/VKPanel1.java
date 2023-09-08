@@ -1,5 +1,7 @@
 package gui;
 
+import controller.TabAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -13,6 +15,7 @@ public class VKPanel1 extends JPanel {
         setLayout(layout);
         add(new JLabel("VK URL     "));
         vkUrlTextArea = new JTextArea(1,30);
+        vkUrlTextArea.addKeyListener(new TabAdapter());
         vkUrlTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(vkUrlTextArea);
     }

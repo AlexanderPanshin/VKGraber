@@ -1,5 +1,7 @@
 package gui;
 
+import controller.TabAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,6 +10,7 @@ public class TextPanel1 extends JPanel {
     public TextPanel1() {
         setLayout(new GridLayout(1,1));
         textInput = new JTextArea();
+        textInput.addKeyListener(new TabAdapter());
         textInput.setBorder(BorderFactory.createTitledBorder("Text editor"));
         textInput.setLineWrap(true);
         textInput.setWrapStyleWord(true);

@@ -1,5 +1,7 @@
 package gui;
 
+import controller.TabAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,7 @@ public class FTPPanel4 extends JPanel {
         setLayout(layout);
         add(new JLabel("Password FTP  "));
         pass = new JPasswordField(27);
+        pass.addKeyListener(new TabAdapter());
         pass.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(pass);
     }

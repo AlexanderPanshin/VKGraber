@@ -2,6 +2,7 @@ package gui;
 
 import controller.BrovsDirectory;
 import controller.BrovsDirectoryListiner;
+import controller.TabAdapter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,7 @@ public class VKPanel3 extends JPanel implements BrovsDirectory {
         setLayout(layout);
         add(new JLabel("PATH TXT"));
         pathTxtArea = new JTextArea(1,30);
+        pathTxtArea.addKeyListener(new TabAdapter());
         pathTxtArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(pathTxtArea);
         JButton browsePathButton = new JButton("Browse");

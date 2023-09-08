@@ -1,5 +1,7 @@
 package gui;
 
+import controller.TabAdapter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,7 @@ public class FTPPanel2 extends JPanel {
         setLayout(layout);
         add(new JLabel("PATH FTP"));
         pathFtp = new JTextArea(1,30);
+        pathFtp.addKeyListener(new TabAdapter());
         pathFtp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         add(pathFtp);
 
