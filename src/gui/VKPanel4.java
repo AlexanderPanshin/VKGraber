@@ -14,6 +14,8 @@ public class VKPanel4 extends JPanel {
         buttonGrabb.addActionListener(new ButtonListiner());
         add(buttonGrabb);
         label = new JLabel("Заполните формы выше");
+        label.getAccessibleContext().setAccessibleDescription("Заполните формы выше для активации кнопки Grabbing");
+        label.setFocusable(true);
         add(label);
         Thread formsThread = new Thread(() -> {
             while(true){

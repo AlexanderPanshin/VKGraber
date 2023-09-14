@@ -22,6 +22,7 @@ public class VKPanel2 extends JPanel implements BrovsDirectory {
         pathImgArea = new JTextArea(1,30);
         pathImgArea.addKeyListener(new TabAdapter());
         pathImgArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pathImgArea.getAccessibleContext().setAccessibleDescription("Введите путь для сохранения изображения");
         add(pathImgArea);
         JButton browsePathButton = new JButton("Browse");
         browsePathButton.addActionListener(brovsDirectoryListiner);

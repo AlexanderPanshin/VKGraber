@@ -17,6 +17,7 @@ public class FTPButtonGroupThread {
                         Center.getBfp().getFtpPanel4().getPass().setEnabled(true);
                         Center.getBfp().getFtpPanel5().getDomainFTP().setEnabled(true);
                         Center.getBfp().getFtpPanel6().getSave().setEnabled(true);
+                        Center.getBfp().getFtpPanel6().getConnectStatus().setFocusable(true);
                         FTPConnect.setIsFTPon(true);
                     } else {
                         Center.getBfp().getFtpPanel2().getPathFtp().setEnabled(false);
@@ -24,6 +25,7 @@ public class FTPButtonGroupThread {
                         Center.getBfp().getFtpPanel4().getPass().setEnabled(false);
                         Center.getBfp().getFtpPanel5().getDomainFTP().setEnabled(false);
                         Center.getBfp().getFtpPanel6().getSave().setEnabled(false);
+                        Center.getBfp().getFtpPanel6().getConnectStatus().setFocusable(false);
                         FTPConnect.setIsFTPon(false);
                     }
                 }

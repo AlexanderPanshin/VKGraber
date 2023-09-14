@@ -15,6 +15,7 @@ public class FTPPanel5 extends JPanel {
         domainFTP = new JTextArea(1,29);
         domainFTP.addKeyListener(new TabAdapter());
         domainFTP.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        domainFTP.getAccessibleContext().setAccessibleDescription("Доменн FTP сервера");
         add(domainFTP);
     }
 

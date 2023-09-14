@@ -15,6 +15,7 @@ public class FTPPanel2 extends JPanel {
         pathFtp = new JTextArea(1,30);
         pathFtp.addKeyListener(new TabAdapter());
         pathFtp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pathFtp.getAccessibleContext().setAccessibleDescription("Путь на FTP сервере");
         add(pathFtp);
 
     }

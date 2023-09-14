@@ -15,6 +15,7 @@ public class FTPPanel4 extends JPanel {
         pass = new JPasswordField(27);
         pass.addKeyListener(new TabAdapter());
         pass.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pass.getAccessibleContext().setAccessibleDescription("Пароль на FTP сервере");
         add(pass);
     }
 

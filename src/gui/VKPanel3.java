@@ -20,6 +20,7 @@ public class VKPanel3 extends JPanel implements BrovsDirectory {
         pathTxtArea = new JTextArea(1,30);
         pathTxtArea.addKeyListener(new TabAdapter());
         pathTxtArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        pathTxtArea.getAccessibleContext().setAccessibleDescription("Введите путь для сохранение текстовго материала ");
         add(pathTxtArea);
         JButton browsePathButton = new JButton("Browse");
         browsePathButton.addActionListener(txtListiner);

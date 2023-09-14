@@ -15,6 +15,7 @@ public class FTPPanel3 extends JPanel {
         loginFtp = new JTextArea(1,30);
         loginFtp.addKeyListener(new TabAdapter());
         loginFtp.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        loginFtp.getAccessibleContext().setAccessibleDescription("Имя пользователя на FTP сервере");
         add(loginFtp);
 
     }

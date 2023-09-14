@@ -31,6 +31,8 @@ public class TextPanel2 extends JPanel {
         add(buttonPanel);
         imgCount = new JLabel("Колличество картинок - : нет");
         strokCount = new JLabel("Колличество строк - : нет");
+        imgCount.setFocusable(true);
+        strokCount.setFocusable(true);
         inform.add(imgCount);
         inform.add(strokCount);
         creatDir = new JCheckBox("Создать директорию в папке ");
