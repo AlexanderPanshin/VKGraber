@@ -1,6 +1,6 @@
 
 ## Запуск приложения:
-Для удобства я публикую [exe файл](https://github.com/AlexanderPanshin/VKGraber/blob/master/out/artifacts/VKgraber.exe) для Windows собранный в [Launch4j](https://launch4j.sourceforge.net)
+Для удобства я публикую [exe файл](https://github.com/AlexanderPanshin/VKGraber/blob/master/out/artifacts/VKGraber_jar/VKGraber.exe) для Windows собранный в [Launch4j](https://launch4j.sourceforge.net)
 И [jar архив](https://github.com/AlexanderPanshin/VKGraber/blob/master/out/artifacts/VKGraber_jar/VKGraber.jar). Запускается командой 
 `java -jar VKGraber.jar`
 или просто двойным кликом.
