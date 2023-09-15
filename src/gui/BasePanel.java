@@ -32,7 +32,7 @@ public class BasePanel extends JFrame {
     private JMenu createFileMenu()
     {
         JMenu prorites = new JMenu("Настройки");
-        prorites.setMnemonic(KeyEvent.VK_ALT);
+        prorites.setMnemonic(KeyEvent.VK_ALT);/
         JMenuItem save = new MenuSave();
         JMenuItem load = new MenuLoad();
         JMenuItem joomlaV4 = new JMenuItem("JoomlaV4");
