@@ -18,8 +18,11 @@ public class MenuLoad extends JMenuItem {
                 File file = new File(new File("").getAbsolutePath() + File.separator + "temp" + File.separator + "save.ph");
                 if (file.exists()) {
                     super.setEnabled(true);
+                    super.getAccessibleContext().setAccessibleDescription("Загрузить");
                 } else {
                     super.setEnabled(false);
+                    super.setFocusable(true);
+                    super.getAccessibleContext().setAccessibleDescription("Не возмоно загрузить, так как ни чего не сохранено");
                 }
             }
         });
