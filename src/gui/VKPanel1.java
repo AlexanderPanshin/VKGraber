@@ -16,6 +16,7 @@ public class VKPanel1 extends JPanel {
         add(new JLabel("VK URL     "));
         vkUrlTextArea = new JTextArea(1,30);
         vkUrlTextArea.addKeyListener(new TabAdapter());
+        vkUrlTextArea.getAccessibleContext().setAccessibleDescription("Укажите URL из ВК");
         vkUrlTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         vkUrlTextArea.getAccessibleContext().setAccessibleDescription("Введиту ссылку материала из ВК");
         add(vkUrlTextArea);

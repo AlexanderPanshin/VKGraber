@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Path;
 
 public class FileManager {
     private int conterImg = 0;
@@ -58,6 +59,9 @@ public class FileManager {
             if (Center.getFtpConnect() != null && FTPConnect.isFTPon()){
                 Center.getFtpConnect().ftpConn(new File(fileName));
             }
+            if (conterImg == 1){
+                cutImage();
+            }
 
         } catch(Exception e) {
             System.out.println("Exception: " + e.getMessage());
@@ -66,18 +70,14 @@ public class FileManager {
     public void cutImage(){
         try {
             if(!pp.getUrlImage().isEmpty()) {
-                BufferedImage image = ImageIO.read(pp.getVkPanel().getImgPath());
-                int x = image.getWidth() / 2 - 100;
-                int y = image.getHeight() / 2 - 100;
-                if (image.getHeight() > 400) {
-                    System.out.println("Start big cuter");
-                    image = image.getSubimage(x, y, 300, 300);
-                    ImageIO.write(image, "JPG", new File(pp.getVkPanel().getImgPath().toString().replace("img", "cuter")));
-                } else {
-                    System.out.println("Start small cuter");
-                    image = image.getSubimage(x, y, 200, 200);
-                    ImageIO.write(image, "JPG", new File(pp.getVkPanel().getImgPath().toString().replace("img", "cuter")));
-                }
+                File file = new File(fileNamePath + pp.getEnNameToPath() + "img" + 0 + ".jpg");
+                BufferedImage image = ImageIO.read(file);
+                int x = image.getWidth();
+                int y = image.getHeight();
+                int min = x > y ? y : x;
+                image = image.getSubimage(0, 0, min, min);
+                ImageIO.write(image, "JPG", new File(fileNamePath + pp.getEnNameToPath() + "img" + "cut" + ".jpg"));
+
             }else System.out.println("Нет фотокарточек кутер не нужен");
         } catch (IOException e) {
             throw new RuntimeException(e);

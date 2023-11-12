@@ -24,6 +24,7 @@ public class BasePanel extends JFrame {
         add(bigVkPanel);
         add(bigFtpPanel);
         add(bigTextPanel);
+        Center.addBigTextPanel(bigTextPanel);
         JMenuBar headMenu = new JMenuBar();
         headMenu.add(createFileMenu());
         setJMenuBar(headMenu);
