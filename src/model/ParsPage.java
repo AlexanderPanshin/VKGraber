@@ -167,6 +167,16 @@ public class ParsPage {
                 urlParse = coorectUrl(urlParse);
                 urlImage.add(urlParse);
             }
+            if (title.isEmpty()){
+                title = document.select("img.PhotoPrimaryAttachment__imageElement");
+                for (Element e : title) {
+                    String urlParse = e.toString();
+                    urlParse = urlParse.split("src=\"")[1];
+                    urlParse = urlParse.split("\"")[0];
+                    urlParse = coorectUrl(urlParse);
+                    urlImage.add(urlParse);
+                }
+            }
         }
     }
     private String coorectUrl (String url){

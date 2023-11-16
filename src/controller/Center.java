@@ -3,6 +3,7 @@ package controller;
 import gui.BasePanel;
 import gui.BigFtpPanel;
 import gui.BigTextPanel;
+import gui.MenuAvtoSave;
 import model.FTPConnect;
 import model.FileManager;
 import model.ParsPage;
@@ -15,6 +16,14 @@ public class Center {
     private static BigFtpPanel bfp;
     private static FTPConnect ftpConnect;
     private static BigTextPanel textPanel;
+    private static MenuAvtoSave menuAvtoSave;
+
+    public static void addMenuAvtoSave(MenuAvtoSave avtoSave){
+        menuAvtoSave = avtoSave;
+    }
+    public static MenuAvtoSave getMenuAvtosave(){
+        return menuAvtoSave;
+    }
     public static void addBigTextPanel(BigTextPanel bigTextPanel){textPanel = bigTextPanel;}
     public static BigTextPanel getBigTextPanel(){return textPanel;}
     public static void addContVk(ContVkPanel v){

@@ -2,6 +2,7 @@ package gui;
 
 import controller.ButtonListiner;
 import controller.Center;
+import controller.CloseOpenListiner;
 import controller.ContVkPanel;
 
 import javax.swing.*;
@@ -29,6 +30,7 @@ public class BasePanel extends JFrame {
         headMenu.add(createFileMenu());
         setJMenuBar(headMenu);
         Center.addBasePanel(this);
+        addWindowListener(new CloseOpenListiner());
     }
     private JMenu createFileMenu()
     {
@@ -37,20 +39,16 @@ public class BasePanel extends JFrame {
         JMenuItem save = new MenuSave();
         JMenuItem load = new MenuLoad();
         JMenuItem joomlaV4 = new JMenuItem("JoomlaV4");
+        JMenuItem autoSave = new MenuAvtoSave();
+        Center.addMenuAvtoSave((MenuAvtoSave) autoSave);
         save.addActionListener(new ButtonListiner());
         load.addActionListener(new ButtonListiner());
         prorites.add(save);
         prorites.add(load);
         prorites.addSeparator();
         prorites.add(joomlaV4);
-
-        /*open.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                System.out.println ("ActionListener.actionPerformed : open");
-            }
-        });*/
+        prorites.addSeparator();
+        prorites.add(autoSave);
         return prorites;
     }
 

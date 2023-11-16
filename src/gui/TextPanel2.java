@@ -71,4 +71,8 @@ public class TextPanel2 extends JPanel {
     public JButton getButton() {
         return button;
     }
+
+    public JCheckBox getCreatDir() {
+        return creatDir;
+    }
 }
